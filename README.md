@@ -1,6 +1,6 @@
 # Project Name
 
-**Author**: Your Name Goes Here
+**Author**: Eva Grace Smith
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
@@ -19,6 +19,9 @@
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+Lab 06 - Katy Lee and I worked on our web request-response cycle together
+
+
 Time Estimates
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
