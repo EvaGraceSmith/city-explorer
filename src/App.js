@@ -65,13 +65,8 @@ class App extends React.Component {
 
 
 
-
-
-
-
-
         <h1>Data from LocationIQ!!</h1>
-        {/* <ul>{locationList}</ul> */}
+        <ul>{locationList}</ul>
         {/* <form onSubmit={this.handleSubmit}>
         <button type="submit">"Explore!"</button>
       </form> */}
@@ -87,7 +82,7 @@ class App extends React.Component {
         </form>
         <Card style={{ 
           paddingLeft: '10rem',
-          width: '25git rem' }}>
+          width: '25 rem' }}>
           <ListGroup variant="flush">
             <ListGroup.Item>{this.state.cityData.display_name}</ListGroup.Item>
             <ListGroup.Item>{this.state.cityData.lat}</ListGroup.Item>
