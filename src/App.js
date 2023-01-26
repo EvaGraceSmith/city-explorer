@@ -80,9 +80,11 @@ class App extends React.Component {
           </label>
           <button type="submit">"Explore!"</button>
         </form>
-        <Card style={{ 
+        <Card style={{
           paddingLeft: '10rem',
-          width: '25 rem' }}>
+          width: '25 rem'
+        }}>
+            {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" /> */}
           <ListGroup variant="flush">
             <ListGroup.Item>{this.state.cityData.display_name}</ListGroup.Item>
             <ListGroup.Item>{this.state.cityData.lat}</ListGroup.Item>
