@@ -21,9 +21,9 @@ I followed the [trello guidelines](https://trello.com/b/Ajj9Cbac/module-2-city-e
 <!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
 01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
-01-25-23- added Card 
-01-26-23- added Map
-01-26-23- added Error Alert
+* 01-25-23- added a search feature, so when a city name is entered,        returns the Latitude and Longitude in a React Card component.
+* 01-26-23- Updated the card to also render a map of the city.
+* 01-26-23- added an Error Alert feature that appears when an invalid city name is entered. 
 
 
 ## Credit and Collaborations
@@ -32,21 +32,7 @@ I followed the [trello guidelines](https://trello.com/b/Ajj9Cbac/module-2-city-e
 Image by <a href="https://pixabay.com/users/pixaline-1569622/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2168868">Sabine Kroschel</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2168868">Pixabay</a>
 Lab 06 - Katy Lee and I worked on our web request-response cycle together
 
-[wrrc](./img/WRRC.png)
-
-
-Time Estimates
-For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
-
-Name of feature: ________________________________
-
-Estimate of time needed to complete: _____
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
+[Web request-response cycle](./img/WRRC.png)
 
 
 Name of feature: _____City Data_________________________
@@ -89,6 +75,19 @@ Finish time: __9om___
 
 Actual time needed to complete: _1____
 
+
+Time Estimates
+For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
+
+Name of feature: ________________________________
+
+Estimate of time needed to complete: _____
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
 
 
 
