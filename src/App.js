@@ -9,14 +9,13 @@ import Alert from 'react-bootstrap/Alert';
 
 let API_KEY = process.env.REACT_APP_LOCATION_API;
 
-console.log(API_KEY);
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      locationData: [],
+      // locationData: [],
       city: "",
       cityData: {},
       error: false,
@@ -71,21 +70,15 @@ class App extends React.Component {
 
 
   render() {
-    let locationList = this.state.locationData.map((charName, index) => {
-      return <li key={index}>{charName.display_name}</li>;
-    });
+
 
 
     return (
       <main>
-
-
-
         <h1>City Explorer</h1>
-        <ul>{locationList}</ul>
 
         {(this.state.error)&&
-          <Alert key='info' variant='info' show="true" transition="false" >Error, please enter a valid City Name</Alert>
+          <Alert key='info' variant='info' show="true" transition="false" >Please enter a valid City Name{this.state.errorMessage}</Alert>
         }
         <form id="form" onSubmit={this.submitCityHandler}>
           <label>

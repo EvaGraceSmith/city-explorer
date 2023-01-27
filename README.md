@@ -23,6 +23,8 @@
 Image by <a href="https://pixabay.com/users/pixaline-1569622/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2168868">Sabine Kroschel</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2168868">Pixabay</a>
 Lab 06 - Katy Lee and I worked on our web request-response cycle together
 
+[wrrc](./img/WRRC.png)
+
 
 Time Estimates
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
@@ -38,15 +40,45 @@ Finish time: _____
 Actual time needed to complete: _____
 
 
-Name of feature: _____Lab 06___________________________
+Name of feature: _____City Data_________________________
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: ___3hrs__
 
-Start time: _____
+Start time: _9____
 
-Finish time: _____
+Finish time: _11____
 
-Actual time needed to complete: _____
+Actual time needed to complete: ___2hrs__
+
+Name of feature: _____Map___________________________
+
+Estimate of time needed to complete: _4hrs____
+
+Start time: ___6pm__
+
+Finish time: ___8pm__
+
+Actual time needed to complete: __2 hrs___
+
+Name of feature: _____Lat/Long___________________________
+
+Estimate of time needed to complete: ___1__
+
+Start time: __7pm___
+
+Finish time: ___8pm__
+
+Actual time needed to complete: _____1 hr
+
+Name of feature: _____Error Alert__________________________
+
+Estimate of time needed to complete: _1____
+
+Start time: _8pm____
+
+Finish time: __9om___
+
+Actual time needed to complete: _1____
 
 
 
