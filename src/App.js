@@ -4,6 +4,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Alert from 'react-bootstrap/Alert';
 
 
 let API_KEY = process.env.REACT_APP_LOCATION_API;
@@ -32,7 +33,7 @@ class App extends React.Component {
 
       let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.city}&format=json`;
       let cityInfo = await axios.get(url);
-    
+
 
       await this.setState({
         cityData: cityInfo.data[0],
@@ -42,7 +43,7 @@ class App extends React.Component {
       let latitude = cityInfo.data[0].lat;
       let longitude = cityInfo.data[0].lon;
       console.log(JSON.stringify(this.state.cityData));
-      let url2 = `https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${latitude},${longitude}&zoom=10&size=400x400&format=jpg`;
+      let url2 = `https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${latitude},${longitude}&zoom=10&size=300x300&format=jpg`;
 
 
       this.setState({
@@ -80,13 +81,12 @@ class App extends React.Component {
 
 
 
-        <h1>Data from LocationIQ!!</h1>
+        <h1>City Explorer</h1>
         <ul>{locationList}</ul>
-        {/* <form onSubmit={this.handleSubmit}>
-        <button type="submit">"Explore!"</button>
-      </form> */}
 
-        {/* add city search  */}
+        {(this.state.error)&&
+          <Alert key='info' variant='info' show="true" transition="false" >Error, please enter a valid City Name</Alert>
+        }
         <form id="form" onSubmit={this.submitCityHandler}>
           <label>
             {" "}
@@ -96,16 +96,17 @@ class App extends React.Component {
           <button type="submit">"Explore!"</button>
         </form>
         <Card style={{
-          paddingLeft: '10rem',
-          width: '25 rem'
+          margin: 'auto',
+          width: '18rem'
         }}>
-
+          {(this.state.mapdata !=={})&&
+          <Card.Img variant="top" src={this.state.mapdata} />}
           <ListGroup variant="flush">
             <ListGroup.Item>{this.state.cityData.display_name}</ListGroup.Item>
             <ListGroup.Item>{this.state.cityData.lat}</ListGroup.Item>
             <ListGroup.Item>{this.state.cityData.lon}</ListGroup.Item>
           </ListGroup>
-          <Card.Img variant="top" src={this.state.mapdata} />
+
         </Card>
       </main>
     );

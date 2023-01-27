@@ -16,7 +16,9 @@ button{
 h1, label{
   color: whitesmoke
 }
-
+ Alert {
+  color: whitesmoke;
+ }
 
 
 
