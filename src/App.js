@@ -20,6 +20,7 @@ class App extends React.Component {
       cityData: {},
       error: false,
       errorMessage: "",
+      mapdata: {},
 
     };
   }
@@ -33,7 +34,7 @@ class App extends React.Component {
       let cityInfo = await axios.get(url);
     
 
-      this.setState({
+      await this.setState({
         cityData: cityInfo.data[0],
         error: false,
       });
@@ -41,14 +42,12 @@ class App extends React.Component {
       let latitude = cityInfo.data[0].lat;
       let longitude = cityInfo.data[0].lon;
       console.log(JSON.stringify(this.state.cityData));
-      let url2 = `https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${latitude},${longitude}&zoom=18&size=500x500&format=jpg`;
-      // const API = `https://maps.locationiq.com/v3/staticmap?key=${locationKey}&center=${this.state.location.lat},${this.state.location.lon}&zoom=18&size=500x500&format=png`;
-      let mapdata = await axios.get(url2)
-  
-console.log(mapdata);
+      let url2 = `https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${latitude},${longitude}&zoom=10&size=400x400&format=jpg`;
+
 
       this.setState({
-        mapdata: mapdata.data[0],
+        cityData: cityInfo.data[0],
+        mapdata: url2,
         error: false,
       });
     } catch (error) {
@@ -100,12 +99,13 @@ console.log(mapdata);
           paddingLeft: '10rem',
           width: '25 rem'
         }}>
-          <Card.Img variant="top" src={this.state.mapdata} />
+
           <ListGroup variant="flush">
             <ListGroup.Item>{this.state.cityData.display_name}</ListGroup.Item>
             <ListGroup.Item>{this.state.cityData.lat}</ListGroup.Item>
             <ListGroup.Item>{this.state.cityData.lon}</ListGroup.Item>
           </ListGroup>
+          <Card.Img variant="top" src={this.state.mapdata} />
         </Card>
       </main>
     );
