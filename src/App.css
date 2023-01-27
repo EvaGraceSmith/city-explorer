@@ -1,4 +1,26 @@
-.App {
+
+main{
+  background-image:url('./img/night-2168868_1280.png');
+  height: 100%;
+  text-align: center;
+  color: navy;
+  padding: 30rem;
+  
+}
+input{
+  color: navy;
+}
+button{
+  color: navy;
+}
+h1, label{
+  color: whitesmoke
+}
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +57,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

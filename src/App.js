@@ -31,10 +31,24 @@ class App extends React.Component {
 
       let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.city}&format=json`;
       let cityInfo = await axios.get(url);
-      console.log("cityInfo", cityInfo.data[0]);
+    
 
       this.setState({
         cityData: cityInfo.data[0],
+        error: false,
+      });
+
+      let latitude = cityInfo.data[0].lat;
+      let longitude = cityInfo.data[0].lon;
+      console.log(JSON.stringify(this.state.cityData));
+      let url2 = `https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${latitude},${longitude}&zoom=18&size=500x500&format=jpg`;
+      // const API = `https://maps.locationiq.com/v3/staticmap?key=${locationKey}&center=${this.state.location.lat},${this.state.location.lon}&zoom=18&size=500x500&format=png`;
+      let mapdata = await axios.get(url2)
+  
+console.log(mapdata);
+
+      this.setState({
+        mapdata: mapdata.data[0],
         error: false,
       });
     } catch (error) {
@@ -44,24 +58,26 @@ class App extends React.Component {
       });
       console.error(error);
     }
-    console.log("Oh no!!Something went wrong! We have an error!", this.state.error);
-    console.log("You have an error!!!!", this.state.errorMessage);
+
   };
 
   handleCityInput = (event) => {
     this.setState({
       city: event.target.value,
+      error: false,
     });
   };
+
+
 
   render() {
     let locationList = this.state.locationData.map((charName, index) => {
       return <li key={index}>{charName.display_name}</li>;
     });
-    console.log(this.state.city);
-    console.log("city", this.state.cityData);
+
+
     return (
-      <>
+      <main>
 
 
 
@@ -84,14 +100,14 @@ class App extends React.Component {
           paddingLeft: '10rem',
           width: '25 rem'
         }}>
-            {/* <Card.Img variant="top" src="holder.js/100px180?text=Image cap" /> */}
+          <Card.Img variant="top" src={this.state.mapdata} />
           <ListGroup variant="flush">
             <ListGroup.Item>{this.state.cityData.display_name}</ListGroup.Item>
             <ListGroup.Item>{this.state.cityData.lat}</ListGroup.Item>
             <ListGroup.Item>{this.state.cityData.lon}</ListGroup.Item>
           </ListGroup>
         </Card>
-      </>
+      </main>
     );
   }
 
