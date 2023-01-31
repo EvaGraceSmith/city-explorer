@@ -8,6 +8,12 @@ import Alert from 'react-bootstrap/Alert';
 
 
 let API_KEY = process.env.REACT_APP_LOCATION_API;
+let SERVER_API = process.env.REACT_APP_API_URL;
+console.log("server api", SERVER_API);
+
+
+
+
 
 
 class App extends React.Component {
