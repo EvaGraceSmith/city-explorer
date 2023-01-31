@@ -35,6 +35,13 @@ Lab 06 - Katy Lee and I worked on our web request-response cycle together
 
 [Web request-response cycle](./img/WRRC.png)
 
+Lab 07 -
+[env files](https://blog.bitsrc.io/a-gentle-introduction-to-env-files-9ad424cc5ff4?gi=a943229a4181)
+"To summarize, .env files contain credentials in key-value format for services used by the program they’re building. They’re meant to be stored locally and not be uploaded to code repositories online for everyone to read. Each developer in a team typically carries one or more .env files for each environment."
+
+
+
+
 
 Name of feature: _____City Data_________________________
 
