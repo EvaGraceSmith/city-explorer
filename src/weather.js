@@ -8,6 +8,7 @@ class Weather extends React.Component {
         super(props);
         this.state = {
           weather:[],
+          weatherCity:"",
           error: false,
           errorMessage:"",    
         };
@@ -27,6 +28,7 @@ class Weather extends React.Component {
       this.setState({
         weather: weather.data,
         error: false,
+        weatherCity: this.props.cityName,
       });
     } catch (error){
       this.setState({
@@ -39,8 +41,8 @@ class Weather extends React.Component {
  
 
     render(){
-         console.log('request weather', this.props.cityLat, this.props.cityLon, this.props.cityName, this.state.weather);
-        if(this.props.cityLon && this.props.cityLat && this.props.cityName && this.state.weather.length===0){
+        //  console.log('request weather', this.props.cityLat, this.props.cityLon, this.props.cityName, this.state.weather);
+        if(this.props.cityLon && this.props.cityLat && this.props.cityName && this.props.cityName !== this.state.weatherCity){
           this.requestWeather();
         }
         return(

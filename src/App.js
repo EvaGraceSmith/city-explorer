@@ -68,10 +68,10 @@ class App extends React.Component {
       <main>
         <h1>City Explorer</h1>
 
-        {(this.state.error)&&
+        {(this.state.error) &&
           <Alert key='info' variant='info' show="true" transition="false" >Please enter a valid City Name {this.state.errorMessage} </Alert>
         }
-        
+
         <form id="form" onSubmit={this.submitCityHandler}>
           <label>
             {" "}
@@ -86,19 +86,19 @@ class App extends React.Component {
           width: '18rem'
         }}>
 
-          {(this.state.cityName !=="")&&
-          <Card.Img variant="top" src={this.state.mapImg} />}
-          
+          {(this.state.cityName !== "") &&
+            <Card.Img variant="top" src={this.state.mapImg} />}
+
           <ListGroup variant="flush">
             <ListGroup.Item>{this.state.cityName}</ListGroup.Item>
             <ListGroup.Item>{this.state.cityLat}</ListGroup.Item>
             <ListGroup.Item>{this.state.cityLon}</ListGroup.Item>
           </ListGroup>
 
-          <Weather 
-             cityName ={this.state.searchcity} 
-             cityLat = {this.state.cityLat}
-             cityLon = {this.state.cityLon}/>
+          <Weather
+            cityName={this.state.searchcity}
+            cityLat={this.state.cityLat}
+            cityLon={this.state.cityLon} />
         </Card>
       </main>
     );
