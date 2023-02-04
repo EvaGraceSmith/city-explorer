@@ -21,7 +21,7 @@ class Weather extends React.Component {
       { params: {
         cityname: this.props.cityName,
         citylon: this.props.cityLon,
-        citylat: this.props.cithLat,   
+        citylat: this.props.cityLat,   
         //axios.get generates a return of html & weather aka needWeather.data
       }});
     //    console.log("Weather server returned ", needWeather.data);
