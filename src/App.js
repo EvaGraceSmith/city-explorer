@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Alert from 'react-bootstrap/Alert';
-import Weather from './Weather.js'
+import Weather from './modules/Weather.js'
+import Movie from './modules/Movie.js'
 
 let SERVER_API = process.env.REACT_APP_API_URL;
 console.log("server api", SERVER_API);
@@ -24,28 +25,36 @@ class App extends React.Component {
       errorMessage: "",
     };
     // Create the child instance using react createRef
-    this.child = React.createRef();
+    this.weatherChild = React.createRef();
+    this.movieChild =React.createRef();
   }
 
   submitCityHandler = async (event) => {
     event.preventDefault();
+    //try and catch work together. Try says try all these things, if you find an error, jump to catch
     try {
       let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchCity}&format=json`;
+      //This is requesting my map from locationIQ. Should probably be moved to server side eventually
       let cityInfo = await axios.get(url);
 
-      //should be this.state.cityLat but does not work
+   //These are returning the lat and long from location iq
       let latitude = cityInfo.data[0].lat;
       let longitude = cityInfo.data[0].lon;
-      
+
+//This is setting the map image url and setting state for future use
       this.setState({
         mapImg: `https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${latitude},${longitude}&zoom=10&size=300x300&format=jpg`,
         error: false,
         cityLon: cityInfo.data[0].lon,
         cityLat: cityInfo.data[0].lat,
-        cityName: cityInfo.data[0].display_name,
+        cityName: cityInfo.data[0].display_name
       });
-      this.child.current.requestWeather(latitude, longitude, this.state.cityName);
+      // This is a call the child function that gets the weather for this location, and city name.
+      this.weatherChild.current.requestWeather(latitude, longitude);
+this.movieChild.current.requestMovie(cityInfo.data[0].display_name.split(',')[0]);
 
+
+//Catch goes with try above and is utilized if the try catches an error
     } catch (error) {
       this.setState({
         error: true,
@@ -54,7 +63,7 @@ class App extends React.Component {
       console.error(error);
     }
   };
-
+//This is a helper function that sets state. It is catching every letter that is typed in to search city.
   handleCityNameInput = (event) => {
     this.setState({
       searchCity: event.target.value,
@@ -94,7 +103,8 @@ class App extends React.Component {
             <ListGroup.Item>{this.state.cityLon}</ListGroup.Item>
           </ListGroup>
 
-          <Weather ref={this.child} />
+          <Weather ref={this.weatherChild} />
+          <Movie ref={this.movieChild}/>
         </Card>
       </main>
     );
