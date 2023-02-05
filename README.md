@@ -36,10 +36,17 @@ Lab 06 - Katy Lee and I worked on our web request-response cycle together
 [Web request-response cycle](./img/WRRC.png)
 
 Lab 07 -
+https://react-bootstrap.github.io/components/alerts/
 [env files](https://blog.bitsrc.io/a-gentle-introduction-to-env-files-9ad424cc5ff4?gi=a943229a4181)
 "To summarize, .env files contain credentials in key-value format for services used by the program they’re building. They’re meant to be stored locally and not be uploaded to code repositories online for everyone to read. Each developer in a team typically carries one or more .env files for each environment."
 
+Lab 08 -
+https://www.weatherbit.io/api/weather-forecast-16-day
+https://chafikgharbi.com/react-call-child-method/
 
+
+Time Estimates
+For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
 
 
@@ -113,11 +120,19 @@ Actual time needed to complete: 10hrs_____
 
 
 
+Name of feature: _______weather api_________________________
 
-Time Estimates
-For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
+Estimate of time needed to complete: ____4 hours_
 
-Name of feature: ________________________________
+Start time: _2 pm____
+
+Finish time: _10 pm____
+
+Actual time needed to complete: __8 hours___
+
+
+
+Name of feature: _______________________________
 
 Estimate of time needed to complete: _____
 
@@ -126,8 +141,6 @@ Start time: _____
 Finish time: _____
 
 Actual time needed to complete: _____
-
-
 
 
 

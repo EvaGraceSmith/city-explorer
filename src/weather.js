@@ -11,19 +11,18 @@ class Weather extends React.Component {
           weatherCity:"",
           error: false,
           errorMessage:"",
-          weatherCallback: this.props.callWeather,
-
         };
-    }
+      }
 
-    requestWeather = async () => {
+    requestWeather = async (cityLat, cityLon, cityName) => {
+  
     try {
-      console.log('request weather', this.props.cityLat, this.props.cityLon);
+      console.log('request weather', cityLat, cityLon);
       let needWeather = await axios.get (`${process.env.REACT_APP_API_URL}/weather`,
       { params: {
-        cityname: this.props.cityName,
-        citylon: this.props.cityLon,
-        citylat: this.props.cityLat,   
+        cityname: cityName,
+        citylon: cityLon,
+        citylat: cityLat,   
         //axios.get generates a return of html & weather aka needWeather.data
       }});
     //    console.log("Weather server returned ", needWeather.data);
@@ -33,7 +32,7 @@ class Weather extends React.Component {
         //setState assigns the needWeather.data to the weather property
         weather: needWeather.data,
         error: false,
-        weatherCity: this.props.cityName,
+        weatherCity: cityName,
       });
       //a catch in if statement. If we don't get any weather back, we are returning an error
     } catch (error){
@@ -45,21 +44,9 @@ class Weather extends React.Component {
     }
   };
 
-//   componentDidUpdate()
-//   {
-//     if ((this.props.cityName !== this.state.weatherCity) && !this.state.error){
-//         this.requestWeather();
-//     }
-//   }
  
 // render is a react function that draws the page and updates as needed
     render(){
-        //  console.log('request weather', this.props.cityLat, this.props.cityLon, this.props.cityName, this.state.weather);
-        //Below is an endless loop. :(
-        if(this.props.cityLon && this.props.cityLat && this.props.cityName && this.props.cityName !== this.state.weatherCity && !this.state.error){
-          this.requestWeather();
-        }
-
         // return utilizes bootstrap components (or other html) and renders them on the web page.
         return(
             <>

@@ -15,7 +15,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchcity: "",
+      searchCity: "",
       cityLat: "",
       cityLon: "",
       cityName: "",
@@ -23,30 +23,28 @@ class App extends React.Component {
       error: false,
       errorMessage: "",
     };
+    // Create the child instance using react createRef
+    this.child = React.createRef();
   }
 
   submitCityHandler = async (event) => {
     event.preventDefault();
     try {
-      let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchcity}&format=json`;
+      let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchCity}&format=json`;
       let cityInfo = await axios.get(url);
 
-      this.setState({
-        cityLon: cityInfo.data[0].lon,
-        cityLat: cityInfo.data[0].lat,
-        cityName: cityInfo.data[0].display_name,
-        error: false,
-      });
       //should be this.state.cityLat but does not work
       let latitude = cityInfo.data[0].lat;
       let longitude = cityInfo.data[0].lon;
-      // console.log(JSON.stringify(this.state.cityData));
-      let imgURL = `https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${latitude},${longitude}&zoom=10&size=300x300&format=jpg`;
-
+      
       this.setState({
-        mapImg: imgURL,
+        mapImg: `https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${latitude},${longitude}&zoom=10&size=300x300&format=jpg`,
         error: false,
+        cityLon: cityInfo.data[0].lon,
+        cityLat: cityInfo.data[0].lat,
+        cityName: cityInfo.data[0].display_name,
       });
+      this.child.current.requestWeather(latitude, longitude, this.state.cityName);
 
     } catch (error) {
       this.setState({
@@ -57,9 +55,9 @@ class App extends React.Component {
     }
   };
 
-  handleCityInput = (event) => {
+  handleCityNameInput = (event) => {
     this.setState({
-      searchcity: event.target.value,
+      searchCity: event.target.value,
       error: false,
     });
   };
@@ -77,7 +75,7 @@ class App extends React.Component {
           <label>
             {" "}
             Pick a City:
-            <input type="text" onInput={this.handleCityInput} />
+            <input type="text" onInput={this.handleCityNameInput} />
           </label>
           <button type="submit">"Explore!"</button>
         </form>
@@ -96,10 +94,7 @@ class App extends React.Component {
             <ListGroup.Item>{this.state.cityLon}</ListGroup.Item>
           </ListGroup>
 
-          <Weather
-            cityName={this.state.searchcity}
-            cityLat={this.state.cityLat}
-            cityLon={this.state.cityLon} />
+          <Weather ref={this.child} />
         </Card>
       </main>
     );
