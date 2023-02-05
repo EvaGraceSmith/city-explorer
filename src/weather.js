@@ -10,7 +10,9 @@ class Weather extends React.Component {
           weather:[],
           weatherCity:"",
           error: false,
-          errorMessage:"",    
+          errorMessage:"",
+          weatherCallback: this.props.callWeather,
+
         };
     }
 
@@ -42,6 +44,13 @@ class Weather extends React.Component {
       console.log (error);
     }
   };
+
+//   componentDidUpdate()
+//   {
+//     if ((this.props.cityName !== this.state.weatherCity) && !this.state.error){
+//         this.requestWeather();
+//     }
+//   }
  
 // render is a react function that draws the page and updates as needed
     render(){

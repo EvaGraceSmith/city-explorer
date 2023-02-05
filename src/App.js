@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Alert from 'react-bootstrap/Alert';
-import Weather from './weather.js'
+import Weather from './Weather.js'
 
 let SERVER_API = process.env.REACT_APP_API_URL;
 console.log("server api", SERVER_API);
@@ -47,6 +47,7 @@ class App extends React.Component {
         mapImg: imgURL,
         error: false,
       });
+
     } catch (error) {
       this.setState({
         error: true,
