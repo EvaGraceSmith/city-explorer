@@ -26,6 +26,9 @@ I followed the [trello guidelines](https://trello.com/b/Ajj9Cbac/module-2-city-e
 * 01-26-23- Updated the card to also render a map of the city.
 * 01-26-23- added an Error Alert feature that appears when an invalid city name is entered. 
 
+* 02-04-23 10:00pm When the user clicks the "Explore!" button, then weather data populates with accurate information.
+02-05-23- When the user clicks the "Explore!" button. Then the top twenty movies set in the area will be displayed in the browser
+
 
 ## Credit and Collaborations
 <!-- Give credit (and a link) to other people or resources that helped you build this application. -->
@@ -36,10 +39,17 @@ Lab 06 - Katy Lee and I worked on our web request-response cycle together
 [Web request-response cycle](./img/WRRC.png)
 
 Lab 07 -
+https://react-bootstrap.github.io/components/alerts/
 [env files](https://blog.bitsrc.io/a-gentle-introduction-to-env-files-9ad424cc5ff4?gi=a943229a4181)
 "To summarize, .env files contain credentials in key-value format for services used by the program they’re building. They’re meant to be stored locally and not be uploaded to code repositories online for everyone to read. Each developer in a team typically carries one or more .env files for each environment."
 
+Lab 08 -
+https://www.weatherbit.io/api/weather-forecast-16-day
+https://chafikgharbi.com/react-call-child-method/
 
+
+Time Estimates
+For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
 
 
 
@@ -113,11 +123,19 @@ Actual time needed to complete: 10hrs_____
 
 
 
+Name of feature: _______weather api_________________________
 
-Time Estimates
-For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
+Estimate of time needed to complete: ____4 hours_
 
-Name of feature: ________________________________
+Start time: _2 pm____
+
+Finish time: _10 pm____
+
+Actual time needed to complete: __8 hours___
+
+
+
+Name of feature: _______________________________
 
 Estimate of time needed to complete: _____
 
@@ -126,8 +144,6 @@ Start time: _____
 Finish time: _____
 
 Actual time needed to complete: _____
-
-
 
 
 

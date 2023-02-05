@@ -5,7 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Alert from 'react-bootstrap/Alert';
-import Weather from './weather.js'
+import Weather from './modules/Weather.js'
+import Movie from './modules/Movie.js'
 
 let SERVER_API = process.env.REACT_APP_API_URL;
 console.log("server api", SERVER_API);
@@ -15,7 +16,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchcity: "",
+      searchCity: "",
       cityLat: "",
       cityLon: "",
       cityName: "",
@@ -23,30 +24,37 @@ class App extends React.Component {
       error: false,
       errorMessage: "",
     };
+    // Create the child instance using react createRef
+    this.weatherChild = React.createRef();
+    this.movieChild =React.createRef();
   }
 
   submitCityHandler = async (event) => {
     event.preventDefault();
+    //try and catch work together. Try says try all these things, if you find an error, jump to catch
     try {
-      let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchcity}&format=json`;
+      let url = `https://us1.locationiq.com/v1/search?key=${API_KEY}&q=${this.state.searchCity}&format=json`;
+      //This is requesting my map from locationIQ. Should probably be moved to server side eventually
       let cityInfo = await axios.get(url);
 
-      this.setState({
-        cityLon: cityInfo.data[0].lon,
-        cityLat: cityInfo.data[0].lat,
-        cityName: cityInfo.data[0].display_name,
-        error: false,
-      });
-      //should be this.state.cityLat but does not work
+   //These are returning the lat and long from location iq
       let latitude = cityInfo.data[0].lat;
       let longitude = cityInfo.data[0].lon;
-      // console.log(JSON.stringify(this.state.cityData));
-      let imgURL = `https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${latitude},${longitude}&zoom=10&size=300x300&format=jpg`;
 
+//This is setting the map image url and setting state for future use
       this.setState({
-        mapImg: imgURL,
+        mapImg: `https://maps.locationiq.com/v3/staticmap?key=${API_KEY}&center=${latitude},${longitude}&zoom=10&size=300x300&format=jpg`,
         error: false,
+        cityLon: cityInfo.data[0].lon,
+        cityLat: cityInfo.data[0].lat,
+        cityName: cityInfo.data[0].display_name
       });
+      // This is a call the child function that gets the weather for this location, and city name.
+      this.weatherChild.current.requestWeather(latitude, longitude);
+this.movieChild.current.requestMovie(cityInfo.data[0].display_name.split(',')[0]);
+
+
+//Catch goes with try above and is utilized if the try catches an error
     } catch (error) {
       this.setState({
         error: true,
@@ -55,10 +63,10 @@ class App extends React.Component {
       console.error(error);
     }
   };
-
-  handleCityInput = (event) => {
+//This is a helper function that sets state. It is catching every letter that is typed in to search city.
+  handleCityNameInput = (event) => {
     this.setState({
-      searchcity: event.target.value,
+      searchCity: event.target.value,
       error: false,
     });
   };
@@ -76,7 +84,7 @@ class App extends React.Component {
           <label>
             {" "}
             Pick a City:
-            <input type="text" onInput={this.handleCityInput} />
+            <input type="text" onInput={this.handleCityNameInput} />
           </label>
           <button type="submit">"Explore!"</button>
         </form>
@@ -95,10 +103,8 @@ class App extends React.Component {
             <ListGroup.Item>{this.state.cityLon}</ListGroup.Item>
           </ListGroup>
 
-          <Weather
-            cityName={this.state.searchcity}
-            cityLat={this.state.cityLat}
-            cityLon={this.state.cityLon} />
+          <Weather ref={this.weatherChild} />
+          <Movie ref={this.movieChild}/>
         </Card>
       </main>
     );

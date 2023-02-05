@@ -10,26 +10,31 @@ class Weather extends React.Component {
           weather:[],
           weatherCity:"",
           error: false,
-          errorMessage:"",    
+          errorMessage:"",
         };
-    }
+      }
 
-    requestWeather = async () => {
+    requestWeather = async (cityLat, cityLon, cityName) => {
+  
     try {
-      console.log('request weather', this.props.cityLat, this.props.cityLon);
-      let weather = await axios.get (`${process.env.REACT_APP_API_URL}/weather`,
+      console.log('request weather', cityLat, cityLon);
+      let needWeather = await axios.get (`${process.env.REACT_APP_API_URL}/weather`,
       { params: {
-        cityname: this.props.cityName,
-        citylon: this.props.cityLon,
-        citylat: this.props.cithLat,   
+        cityname: cityName,
+        citylon: cityLon,
+        citylat: cityLat,   
+        //axios.get generates a return of html & weather aka needWeather.data
       }});
-       console.log("Weather server returned ", weather.data);
+    //    console.log("Weather server returned ", needWeather.data);
+
 
       this.setState({
-        weather: weather.data,
+        //setState assigns the needWeather.data to the weather property
+        weather: needWeather.data,
         error: false,
-        weatherCity: this.props.cityName,
+        weatherCity: cityName,
       });
+      //a catch in if statement. If we don't get any weather back, we are returning an error
     } catch (error){
       this.setState({
       error: true,
@@ -38,13 +43,11 @@ class Weather extends React.Component {
       console.log (error);
     }
   };
- 
 
+ 
+// render is a react function that draws the page and updates as needed
     render(){
-        //  console.log('request weather', this.props.cityLat, this.props.cityLon, this.props.cityName, this.state.weather);
-        if(this.props.cityLon && this.props.cityLat && this.props.cityName && this.props.cityName !== this.state.weatherCity){
-          this.requestWeather();
-        }
+        // return utilizes bootstrap components (or other html) and renders them on the web page.
         return(
             <>
             {(this.state.error) && 
