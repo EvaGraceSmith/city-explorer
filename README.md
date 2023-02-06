@@ -52,6 +52,7 @@ Lab 08 -
 https://www.weatherbit.io/api/weather-forecast-16-day
 https://chafikgharbi.com/react-call-child-method/
 
+[Lab 08 Web request-response cycle](./img/lab08WRRC.png)
 
 Time Estimates
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
