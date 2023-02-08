@@ -17,17 +17,22 @@ I followed the [trello guidelines](https://trello.com/b/Ajj9Cbac/module-2-city-e
 * React
 * Bootstrap
 * Axios
+* Node.js
+* Express
+* CORS
+
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an example:
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource. -->
 * 01-25-23- added a search feature, so when a city name is entered,        returns the Latitude and Longitude in a React Card component.
 * 01-26-23- Updated the card to also render a map of the city.
 * 01-26-23- added an Error Alert feature that appears when an invalid city name is entered. 
 
 * 02-04-23 10:00pm When the user clicks the "Explore!" button, then weather data populates with accurate information.
-02-05-23- When the user clicks the "Explore!" button. Then the top twenty movies set in the area will be displayed in the browser
+* 02-05-23- 2:00pm When the user clicks the "Explore!" button. Then the top twenty movies set in the area will be displayed in the browser
+* 02-05-23- 5:00pm Modularize the back-end
+
+
 
 
 ## Credit and Collaborations
@@ -47,6 +52,7 @@ Lab 08 -
 https://www.weatherbit.io/api/weather-forecast-16-day
 https://chafikgharbi.com/react-call-child-method/
 
+[Lab 08 Web request-response cycle](./img/lab08WRRC.png)
 
 Time Estimates
 For each of the lab features, make an estimate of the time it will take you to complete the feature, and record your start and finish times for that feature:
@@ -132,6 +138,18 @@ Start time: _2 pm____
 Finish time: _10 pm____
 
 Actual time needed to complete: __8 hours___
+
+
+
+Name of feature: _____Added Movie__________________________
+
+Estimate of time needed to complete: ____3 hrs_
+
+Start time: 10 am_____
+
+Finish time: ___2pm__
+
+Actual time needed to complete:  4 hrs_____
 
 
 
