@@ -7,6 +7,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import Alert from 'react-bootstrap/Alert';
 import Weather from './modules/Weather.js'
 import Movie from './modules/Movie.js'
+import Yelp from './modules/Yelp.js'
 
 let SERVER_API = process.env.REACT_APP_API_URL;
 console.log("server api", SERVER_API);
@@ -27,6 +28,7 @@ class App extends React.Component {
     // Create the child instance using react createRef
     this.weatherChild = React.createRef();
     this.movieChild =React.createRef();
+    this.yelpChild = React.createRef();
   }
 
   submitCityHandler = async (event) => {
@@ -52,6 +54,8 @@ class App extends React.Component {
       // This is a call the child function that gets the weather for this location, and city name.
       this.weatherChild.current.requestWeather(latitude, longitude);
 this.movieChild.current.requestMovie(cityInfo.data[0].display_name.split(',')[0]);
+// I need one specific to yelp ie:
+// this.yelpChild.current.requestYelp(cityInfo.data[0].display_name.split(',')[0])
 
 
 //Catch goes with try above and is utilized if the try catches an error
@@ -105,6 +109,7 @@ this.movieChild.current.requestMovie(cityInfo.data[0].display_name.split(',')[0]
 
           <Weather ref={this.weatherChild} />
           <Movie ref={this.movieChild}/>
+          <Yelp ref={this.yelpChild}/>
         </Card>
       </main>
     );
