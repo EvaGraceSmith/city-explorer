@@ -51,9 +51,10 @@ class App extends React.Component {
         cityLat: cityInfo.data[0].lat,
         cityName: cityInfo.data[0].display_name
       });
+      let shortCityNanme= cityInfo.data[0].display_name.split(',')[0];
       // This is a call the child function that gets the weather for this location, and city name.
-      this.weatherChild.current.requestWeather(latitude, longitude);
-this.movieChild.current.requestMovie(cityInfo.data[0].display_name.split(',')[0]);
+      this.weatherChild.current.requestWeather(latitude, longitude, shortCityNanme);
+      this.movieChild.current.requestMovie(shortCityNanme);
 // I need one specific to yelp ie:
 // this.yelpChild.current.requestYelp(cityInfo.data[0].display_name.split(',')[0])
 
