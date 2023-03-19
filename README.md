@@ -29,8 +29,8 @@ I followed the [trello guidelines](https://trello.com/b/Ajj9Cbac/module-2-city-e
 * 01-26-23- added an Error Alert feature that appears when an invalid city name is entered. 
 
 * 02-04-23 10:00pm When the user clicks the "Explore!" button, then weather data populates with accurate information.
-* 02-05-23- 2:00pm When the user clicks the "Explore!" button. Then the top twenty movies set in the area will be displayed in the browser
-* 02-05-23- 5:00pm Modularize the back-end
+* 02-05-23- 2:00pm When the user clicks the "Explore!" button, then the top twenty movies set in the area will be displayed in the browser
+* 02-05-23- 5:00pm Modularized the back-end
 
 
 
